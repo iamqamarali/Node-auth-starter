@@ -1,0 +1,26 @@
+
+$primary : #ffb77a;
+$secondary: rgba(0,0,0,.5);
+
+
+:root{
+    --box-border-radius: 25px;
+
+
+    // default colors
+    --dark-50: rgba(0,0,0,.5);
+
+    --light-pink: #ffefe2;
+    --light-green: #effcef;
+    --light-blue: #e6f5f9;
+    --light-gray: #f4f6fa;
+
+
+    // sidebar
+    --sidebar-width: 90px;
+    --sidebar-bg: #{$primary};
+    --sidebar-text-color: black;
+    --sidebar-text-hover-color: var(--dark-50);
+    --sidebar-border-radius: 14px;
+}
+

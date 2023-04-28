@@ -1,0 +1,92 @@
+.author{
+    display: flex;    
+    align-items: center;        
+    --author-image-size: 40px;
+}
+.author img{
+    display: block;
+    width: var(--author-image-size);
+    height: var(--author-image-size);
+    border-radius: 50%;
+    margin-right: .8rem;
+}
+.author p{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+
+/**
+
+* Post Card
+*/
+.post-card{
+    --card-body-border-radius: 15px;
+    position: relative;
+    border-radius: var(--card-body-border-radius);
+    .post-card__image{
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .card-body{
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        .author{
+
+        }
+        .content{
+            margin-top: auto;
+            .card-title{
+                margin: 1.4em 0 .5em;
+            }
+        }
+    }
+
+}
+
+/**
+* Post Card - Overlaping Image
+*/
+.post-card.post-card--overlaping-image{
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .post-card__image{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        border-radius: var(--card-body-border-radius);
+    }
+    .card-body{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        background-color: rgba(0, 0, 0, .5);
+        color: #ededed;
+        border-radius: var(--card-body-border-radius);
+    }
+}
+
+
+.posts-grid--masonry{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+
+    .item-1{
+        grid-column: span 2;
+    }
+    .item-4{
+        grid-column: span 2;
+    }
+    .item-5{
+        grid-column-start : 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+} 
+

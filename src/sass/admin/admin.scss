@@ -1,0 +1,28 @@
+@import './variables';
+
+@import '~bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+
+@import './helpers/all';
+@import './theme/theme1/all';
+
+@import './layout';
+@import './partials/_all';
+
+
+:root{
+    font-size: 16px;
+}
+
+body{
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.container-fluid{
+    // padding: 0 40px;
+    // margin: 0 auto;
+    // max-width: 1300px;
+}
+

@@ -1,0 +1,59 @@
+<style>
+    .users-page{
+
+    }
+    .table{
+        vertical-align: middle;
+    }
+    .table img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container-fluid users-page">
+
+    <header class="d-flex justify-content-between">
+        <h3>Users</h3>
+        <a href="/dashboard/users/create" class="btn btn-primary rounded-5 ">Create User</a>
+    </header>
+
+
+    <div class="row py-5">
+        <div class="col-12">
+            <table class="table  table-hover" >
+                <thead>
+                    <tr> 
+                        <th>Avatar</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users }}
+                    <tr >
+                        <td>
+                            {{#if avatar}}
+                                <img src="{{ avatar}}" alt="avatar" />
+                            {{/if}}
+                        </td>
+                        <td>{{ name }}</td>
+                        <td>{{ email }}</td>
+                        <td>{{formatDate createdAt }}</td>
+                        <td class="text-center">
+                            <form action="/dashboard/users/delete/{{_id}}" method="Post" class="d-inline">
+                                <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                            <a href="/dashboard/users/edit/{{ _id }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>    
+    </div>    
+
+</div>

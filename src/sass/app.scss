@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+
+@import '~bootstrap/scss/bootstrap';
+
+
+@import './_variavbles';
+@import './partials/_all';
+@import './global-components/_all';
+@import './pages/_all';
+
+
+
+:root{
+    font-size: 16px;
+}
+
+body{
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+    

@@ -1,0 +1,15 @@
+.navbar{
+    background-color: var(--navbar-bg-color);
+    padding: 25px 0;
+    color: var(--navbar-color);
+    .navbar-brand{
+        color: var(--navbar-color);
+    }
+    .nav .nav-link {
+        color: var(--navbar-color);
+        &:hover{
+            color: var(--navbar-color-hover);
+        }
+    }
+
+}

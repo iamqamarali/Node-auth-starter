@@ -1,0 +1,25 @@
+
+
+POST  http://localhost:3000/signup
+Accept: application/json
+Content-Type: application/json
+
+{
+    "first_name" : "Qamar",
+    "last_name" : "Ali",
+    "email" : "iamqamarali1@gmail.com",
+    "password" : "password",
+    "confirm_password" : "password"
+}
+
+###
+
+POST http://localhost:3000/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email" : "iamqamarali1@gmail.com",
+    "password" : "password"
+}
+

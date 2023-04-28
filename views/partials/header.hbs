@@ -1,0 +1,33 @@
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">Node Blog</a>
+
+        <form class="d-flex ms-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            {{!-- user dropdown --}}
+            {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{user.name}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end ">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            {{else}}
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+            {{/if}}
+        </ul>
+
+    </div>
+</nav>

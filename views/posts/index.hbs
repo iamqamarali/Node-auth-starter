@@ -1,0 +1,46 @@
+<div class="container py-3 posts-page-content">
+    <div class=" p-2"></div>
+
+    <section class="row ">
+
+        <header class="my-5">
+            <h3 >All Posts </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nesciunt adipisci magnam ipsa consectetur beatae nihil magni </p>
+        </header>
+
+
+        {{#each posts}}
+            <div class="col-4 mb-2">
+                <a href="/posts/{{_id}}" class="card d-block text-body text-decoration-none">
+                    <img src="{{ image }}" alt="" class="card-img-top">
+                    <div class="card-body">
+                        {{!-- media --}}
+                        <h5 class="card-title">{{ substring title 0 50 }}</h5>
+                        <p class="card-text">{{ substring body 0 200 }}</p>
+                        <div class="card-text d-flex justify-content-between align-items-center">
+                            <div class="author">
+                                <img src="{{ author.avatar }}" alt="">
+                                <p>{{ author.name }}</p>
+                            </div>
+
+                            <small class="text-muted">{{formatDate createdAt }}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {{/each}}
+    </section>
+
+    <div class="text-center my-3">
+        <div class="d-inline-flex ">
+            {{#if pagination.prev_page}}
+                <a href="{{ pagination.prev_page_url }}" class="btn btn-dark me-3 d-block">Previous Page</a>
+            {{/if}}
+            <a href="{{ pagination.next_page_url }}" class="btn btn-dark d-block">Next Page</a>
+
+        </div>
+    </div>
+    
+
+
+</div>

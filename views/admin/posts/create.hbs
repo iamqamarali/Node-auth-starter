@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+    <header class="d-flex justify-content-between">
+        <h3>Create Post</h3>
+    </header> 
+
+
+
+    <div class="row py-5">
+        <div class="col-lg-8 col-md-10">
+            <form action="/dashboard/posts" method="POST" enctype="multipart/form-data">
+                
+                {{> error-messages}}
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Image</label>
+                    <input type="file" name="image" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Title</label>
+                    <input type="text" name="title" class="form-control" placeholder="Title">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Body</label>
+                    <textarea name="body" class=" form-control " cols="30" rows="10" placeholder="Description"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Tags <small class="text-black-50">(Please add comma seperated tags)</small></label>
+                    <input type="text" name="tags" class="form-control" placeholder="Tags">
+                </div>
+
+                <button class="btn btn-primary rounded-5">Create</button>
+
+            </form>
+
+        </div> 
+    </div>   
+
+</div>
