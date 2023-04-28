@@ -1,0 +1,61 @@
+<style>
+    .users-page{
+
+    }
+    .table{
+        vertical-align: middle;
+    }
+    .table img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container-fluid users-page">
+
+    <header class="d-flex justify-content-between">
+        <h3>Users</h3>
+        <a href="/dashboard/users/create" class="btn btn-primary rounded-5 ">Create User</a>
+    </header>
+
+
+    <div class="row py-5">
+        <div class="col-12">
+            <table class="table  table-hover" >
+                <thead>
+                    <tr> 
+                        <th>Avatar</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>                     
+                        <tr >
+                            <td>
+                                <% if (user.avatar) { %>
+                                    <img src="<%= user.avatar %>" alt="avatar" />                                 
+                                <% } %>
+                            </td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= moment(user.createdAt).format('MMM D Y') %></td>
+                            <td class="text-center">
+                                <form action="/dashboard/users/delete/<%= user._id %>" method="Post" class="d-inline">
+                                    <button type="submit" class="btn"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                                <!-- 
+                                    <a href="/dashboard/users/edit/<%= user._id %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                 -->
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>    
+    </div>    
+
+</div>

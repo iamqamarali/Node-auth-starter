@@ -34,9 +34,10 @@ const UsersController = {
      * create method
     */
     create(req, res) {
+        let roles = Array.from(Object.values(Roles));
         res.render('admin/users/create', { 
             title: 'Create User',
-            roles: Roles,
+            roles: roles,
         })
     },
     
@@ -94,7 +95,7 @@ const UsersController = {
 
         let result = validationResult(req)
         if(!result.isEmpty()){
-            return next(new UnprocessableEntityError('', result.mapped()));
+            return next(new UnprocessableEntityError('', result.array()));
         }
 
         let validatedData = matchedData(req)

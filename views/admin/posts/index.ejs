@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <header class="d-flex justify-content-between">
+        <h3>Posts</h3>
+        <a href="/dashboard/posts/create" class="btn btn-primary rounded-5 ">Create Post</a>
+    </header>
+
+
+    <div class="row py-5">
+        <div class="col-12">
+            <table class="table  table-hover">
+                <thead>
+                    <tr> 
+                        <th scope="col">Author</th>
+                        <th scope="col">Title</th>
+                        <th>Body</th>
+                        <th>Tags</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% posts.forEach(post => { %>                     
+                        <tr>
+                            <td><%= post.author.name %></td>
+                            <td><%= post.title.substring(0, 20) %>...</td>
+                            <td><%= post.body.substring(0, 50) %>...</td>
+                            <td>
+                                <% post.tags.forEach(tag => { %>
+                                    <span class="badge bg-dark"><%= tag %></span>                                 
+                                <% }) %>
+                            </td>
+                            <td><%= moment(post.createdAt).format('M D Y') %></td>
+                            <td class="text-center">
+                                <span class="me-1"><i class="fa-solid fa-trash"></i></span>
+                                <span class=""><i class="fa-solid fa-pen-to-square"></i></span>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>    
+    </div>    
+
+</div>

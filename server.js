@@ -1,5 +1,5 @@
 const express = require('express')
-const HandleBars = require('express-handlebars')
+const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const MainRouter = require('./routes/_main')
@@ -9,6 +9,10 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
 
+const ejs = require('ejs');
+const moment = require('moment')
+
+//require('dotenv').config()
 
 
 // connect mongoose to mongodb
@@ -38,76 +42,19 @@ MongoSessionStore.on('error', function(error) {
 
 const app = express()
 
+
 /**
- * setup handlebars
+ * setup ejs
  */
-const hbs = HandleBars.create({
-    defaultLayout: 'main',
-    extname: '.hbs',
-    partialsDir: './views/partials',
-    partialsDir: [
-        './views/partials',
-        {
-            dir: './views/admin/partials',
-            namespace: 'admin', 
-        }
-
-    ],
-    helpers: {
-        times: function(n, block) {
-            var accum = '';
-            for(var i = 0; i < n; ++i){
-                accum += block.fn(i);
-            }
-            return accum;
-        },
-        add: (...args)=>{
-            args.pop();
-            return args.reduce((a, b)=> a + b)
-        },
-        substring : (str, start, end) => {
-            return str.substring(start, end)
-        },
-        formatDate: (date) => {
-            let d = new Date(date)
-            return d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-                    d.getHours() + ":" + d.getMinutes(); 
-        },
-        ucwords : (str) => {
-            return str.replace(/\b\w/g, l => l.toUpperCase());
-        },
-
-        arrayIncludes: (arr, val, output1, output2) => {
-            if(!arr){
-                return output2
-            }
-            if(arr.includes(val)){
-                return output1
-            }
-            return output2
-        },
-        when : (operand_1, operator, operand_2, options) =>{
-            console.log
-            var operators = {
-             'eq': function(l,r) { return l == r; },
-             'noteq': function(l,r) { return l != r; },
-             'gt': function(l,r) { return Number(l) > Number(r); },
-             'or': function(l,r) { return l || r; },
-             'and': function(l,r) { return l && r; },
-             '%': function(l,r) { return (l % r) === 0; }
-            }
-            result = operators[operator](operand_1,operand_2);
-          
-            if (result) return options.fn(this);
-            else  return options.inverse(this);
-        }
-    }
-})
-
-// set Express View Engine
-app.engine('hbs', hbs.engine);
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
 app.set('views', './views');
+// app template engine variables
+app.use((req, res, next) => {
+    res.locals.moment = moment;
+    next();
+});
 
 
 /**

@@ -1,0 +1,105 @@
+<div class="container py-3 home-page-content">
+    <div class=" p-2"></div>
+
+
+    <section class="row mb-5">
+        <div class="col-lg-10 offset-lg-1">
+            <header class="my-5">
+                <h3 >Featured Posts </h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nesciunt adipisci magnam ipsa consectetur beatae nihil magni porro vitae minus. Eligendi, deleniti? Suscipit, repudiandae cumque vitae dolorem laborum consequatur quibusdam.</p>
+            </header>
+
+            
+            <div class="posts-grid--masonry">
+                <% featured.forEach(function(post, index){ %>
+                    <div href="/posts/<%= post._id %>" class=" text-white card post-card post-card--overlaping-image item-<%= index+1 %> ">
+                        <div class="post-card__image" style="background-image:url('<%= post.image %>')" ></div>
+                        <div class="card-body">
+                            <div class="author">
+                                <img src="<%= post.author.avatar %>" alt="">
+                                <p><%= post.author.name  %></p>
+                            </div>
+                            
+                            <div class="content">
+                                <% if(index == 0){ %>
+                                    <h3 class="card-title"><%= post.title %></h3>
+                                    <p><%= post.body.substring(0,200) %></p>
+                                <% } %>
+                                <% if(index == 1){ %>
+                                    <h3 class="card-title"><%= post.title.substring(0,35) %></h3>
+                                    <p><%= post.body.substring(0,70) %></p>
+                                <% } %>
+                                <% if(index == 2){ %>
+                                    <h3 class="card-title"><%= post.title.substring(0,35) %></h3>
+                                    <p><%= post.body.substring(0,70) %></p>
+                                <% } %>
+                                <% if(index == 3){ %>
+                                    <h3 class="card-title"><%= post.title %></h3>
+                                    <p><%= post.body.substring(0,200) %></p>
+                                <% } %>
+                                <% if(index == 4){ %>
+                                    <h3 class="card-title"><%= post.title %></h3>
+                                    <p><%= post.body.substring(0,300) %></p>
+                                <% } %>
+                                <a href="" class="btn btn-outline-light">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="row ">
+
+        <header class="my-5">
+            <h3 >More Posts </h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nesciunt adipisci magnam ipsa consectetur beatae nihil magni </p>
+        </header>
+
+
+        <% posts.forEach(post => { %>
+            <div class="col-4 mb-2">
+                <div class="card">
+                    <img src="<%= post.image %>" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= post.title.substring(0,50) %></h5>
+                        <p class="card-text"><%= post.body.substring(0,200) %></p>
+                        <div class="card-text d-flex justify-content-between align-items-center">
+                            <div class="author">
+                                <img src="<%= post.author.avatar %>" alt="">
+                                <p><%= post.author.name %></p>
+                            </div>
+
+                            <small class="text-muted"><%= moment(post.createdAt).format('MMM Do Y') %></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </section>
+
+    <div class="row">
+        <div class="col-sm-2 offset-sm-5 py-4 mb-3">
+            <a href="/posts" class="btn btn-dark mt-3 d-block">View All</a>
+        </div>
+    </div>
+    
+
+
+</div>
+
+
+<script>
+    let featured = document.querySelectorAll('.posts-grid--masonry .post-card');
+
+    featured.forEach(elm => {
+        elm.addEventListener('click', function(){
+            window.location = elm.getAttribute('href')
+        })
+    })
+</script>

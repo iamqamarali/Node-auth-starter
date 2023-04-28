@@ -1,7 +1,7 @@
 
 <div class="container py-5">
 
-    {{> error-messages }}
+    <%- include('../partials/error-messages.ejs') %>
 
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
@@ -17,13 +17,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class=" form-label">First Name</label>
-                                    <input type="text" name="first_name" class="form-control" value="{{ old.first_name }}" placeholder="First Name">
+                                    <input type="text" name="first_name" class="form-control" value="<%= old.first_name %>" placeholder="First Name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class=" form-label">Last Name</label>
-                                    <input type="text" name="last_name" class="form-control" value="{{ old.last_name }}"  placeholder="Last Name">
+                                    <input type="text" name="last_name" class="form-control" value="<%= old.last_name %>"  placeholder="Last Name">
                                 </div>
                             </div>
                         </div>
@@ -31,13 +31,13 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class=" form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" value="{{ old.email }}" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" value="<%= old.email %>" placeholder="Email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class=" form-label">Address</label>
-                                    <input type="text" name="address" class="form-control" value="{{ old.address }}" placeholder="Address">
+                                    <input type="text" name="address" class="form-control" value="<%= old.address %>" placeholder="Address">
                                 </div>
                             </div>
                         </div>

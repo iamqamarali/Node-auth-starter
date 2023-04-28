@@ -14,7 +14,7 @@ const multer = Multer({})
 
 // set admin as layout for all admin routes
 router.use((req, res, next)=>{
-    res.locals.layout = 'admin',
+    res.locals.layout = 'layouts/admin',
     next();
 })
 

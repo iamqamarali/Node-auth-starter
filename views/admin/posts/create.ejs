@@ -10,7 +10,7 @@
         <div class="col-lg-8 col-md-10">
             <form action="/dashboard/posts" method="POST" enctype="multipart/form-data">
                 
-                {{> error-messages}}
+                <%- include('../../partials/error-messages') %>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Image</label>
@@ -19,17 +19,17 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control" placeholder="Title">
+                    <input type="text" name="title" class="form-control" value="<%= old.title %>" placeholder="Title">
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Body</label>
-                    <textarea name="body" class=" form-control " cols="30" rows="10" placeholder="Description"></textarea>
+                    <textarea name="body" class=" form-control" value="<%= old.body %>" cols="30" rows="10" placeholder="Description"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Tags <small class="text-black-50">(Please add comma seperated tags)</small></label>
-                    <input type="text" name="tags" class="form-control" placeholder="Tags">
+                    <input type="text" name="tags" class="form-control" value="<%= old.tags %>" placeholder="Tags">
                 </div>
 
                 <button class="btn btn-primary rounded-5">Create</button>

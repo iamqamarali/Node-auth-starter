@@ -63,13 +63,17 @@ module.exports = {
 
         let result = validationResult(req)
         if(!result.isEmpty()){
-            return next(new UnprocessableEntityError(null, result.mapped()));
+            return next(new UnprocessableEntityError(null, result.array()));
         }
 
         // validate image 
         if(req.file){
             if(!req.file.mimetype.includes('image')){
-                return next(new UnprocessableEntityError(null, {image:{msg : 'You can only upload images'}}));
+                let errors = [{ 
+                    field: 'image',
+                    msg : 'You can only upload images'
+                }]
+                return next(new UnprocessableEntityError(null, errors));
             }    
         }
         

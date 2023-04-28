@@ -5,21 +5,23 @@
 
         <div class="col-lg-10 offset-lg-1">
             <header class="my-5">
-                <h3 >{{post.title}} </h3>
+                <h3 ><%= post.title %> </h3>
             </header>
 
             <div class="d-flex justify-content-between align-items-center mb-5">
                 <div class="author">
-                    <img src="{{ post.author.avatar }}" alt="">
-                    <p>{{ post.author.name }}</p>
+                    <img src="<%= post.author.avatar %>" alt="">
+                    <p><%= post.author.name %></p>
                 </div>
 
-                <small >{{formatDate post.createdAt }}</small>
+                <small ><%= moment(post.createdAt).format('MMM Do Y') %></small>
             </div>        
 
-            <img src="{{ post.image }}" alt="" class="w-100">
+            <img src="<%= post.image %>" alt="" class="w-100">
             <div class="content my-5">
-                <p>{{ post.body }}</p>
+                <% post.body.split('\n').forEach(content => { %>
+                    <p><%= content %></p>                 
+                <% }) %>
             </div>
         </div>
     </section>

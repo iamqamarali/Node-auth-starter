@@ -26,13 +26,11 @@ const AuthController = {
         // validate data
         await checkSchema({
             email : {
-                notEmpty: true,
-                isEmail: true,
                 errorMessage: 'Please enter a valid email address',
+                isEmail: { bail: true },
                 custom: { options: exists(User, 'email') }
             },
             password: {
-                notEmpty: true,
                 isLength: {
                     options: { min: 6 }
                 },
@@ -43,7 +41,7 @@ const AuthController = {
 
         let result = validationResult(req)
         if(!result.isEmpty()){
-            return next(new UnprocessableEntityError('', result.mapped()));
+            return next(new UnprocessableEntityError('', result.array()));
         }
 
         let { email, password } = matchedData(req)
@@ -51,7 +49,10 @@ const AuthController = {
 
         // if password doesnt match send error
         if(user.password != password){
-            let errors = {password:{msg:"Password doesn't match"}}
+            let errors = [{ 
+                field :  password ,
+                msg:"Password doesn't match"
+            }]
             return next(new UnprocessableEntityError('', errors));
         }
 
@@ -83,7 +84,7 @@ const AuthController = {
         let result = validationResult(req)
 
         if(!result.isEmpty()){
-            throw new UnprocessableEntityError('', result.mapped());
+            throw new UnprocessableEntityError('', result.array());
         }
 
         let user = new User({

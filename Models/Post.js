@@ -12,7 +12,7 @@ const PostSchema = new Mongoose.Schema({
     },
     tags:[String],
     image: String,
-    featured: Boolean,  
+    featured: Boolean,
 
 
     author : {

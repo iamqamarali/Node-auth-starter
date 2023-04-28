@@ -26,8 +26,9 @@ router.post(
     check('last_name').isLength({min:3})
                         .withMessage("minimum length of last name should be 3")
                         .escape(),
-    check('email', 'Please provide a valid email address').notEmpty()
+    check('email', 'Please provide a valid email address')
                 .isEmail()
+                .bail() 
                 .custom(unique(User, 'email')),
     check('password', 'Password should be at least 6 characters long').isLength({ min: 6 }),
     check('confirm_password', 'Password and confirm password should match')

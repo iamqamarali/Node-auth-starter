@@ -2,7 +2,7 @@
 
 <div class="container py-5">
 
-    {{> error-messages }}
+    <%- include('../partials/error-messages.ejs') %>
 
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-6">
@@ -15,11 +15,11 @@
                     <form action="/login" method="POST">
                         <div class="mb-3">
                             <label for="" class=" form-label">Email</label>
-                            <input type="text" name="email" class="form-control" value="{{old.email}}" placeholder="Email">
+                            <input type="text" name="email" class="form-control" value="<%= old.email %>" placeholder="Email">
                         </div>
                         <div class="mb-3">
                             <label for="" class=" form-label">Password</label>
-                            <input type="password" name="password" value="{{old.password}}" class="form-control" placeholder="Password">
+                            <input type="password" name="password" value="<%= old.password %>" class="form-control" placeholder="Password">
                         </div>                        
 
                         <div class="mb-3">

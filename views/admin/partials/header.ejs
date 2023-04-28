@@ -3,10 +3,10 @@
         <a class="navbar-brand fw-bold" href="#">Node Project</a>
 
         <ul class="nav">
-            {{#if user}}
+            <% if (user) { %>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle text-dark text-uppercase" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{user.name}}
+                        <%= user.name %>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end ">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -15,7 +15,7 @@
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </li>
-            {{/if}}
+            <% } %>
         </ul>
 
     </div>
