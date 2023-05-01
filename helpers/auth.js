@@ -5,16 +5,39 @@ const config = {
     cookie_name : 'user_cookie',
     cookie_max_age : 3 * 24 * 60 * 60, // 3 days  
     
-    jwt_secret_key :  "jwt-secret-private-key",
+    jwt_secret_key :  process.env.JWT_SECRET_KEY,
 }
 
 const auth = {
 
     user : null,
 
+
     /**
      * 
+     * @param {*} req 
+     * @param {*} res 
+     * @returns 
+     */
+    verifyToken : function(token){
+
+        return JWT.verify(token, config.jwt_secret_key)
+    },
+
+    /**
+     * 
+     */
+    getUser : async function(decodedToken){
+        this.user = await User.findById(decodedToken.user_id)
+        return this.user
+    },
+
+
+    /**
      * verify if user is logged in
+     * @param {*} req 
+     * @param {*} res 
+     * @returns Boolean
      */
     check : async function(req, res){
 
@@ -35,19 +58,16 @@ const auth = {
 
         let decodedToken = null;
         try{
-            decodedToken = JWT.verify(token, config.jwt_secret_key)
-            let user = await User.findById(decodedToken.user_id)
+            decodedToken = this.verifyToken(token)
+            let user = await this.getUser(decodedToken)
             if(user){
-
-                this.user = user                
-                // add user to request object
 
                 // add user to global response variables
                 res.locals.user = user.toObject({virtuals: true})
                 return true;
             }
         }catch(err){
-            // if token is invalid            
+            // if token is invalid just return false
         }
 
         return false;
@@ -66,9 +86,16 @@ const auth = {
 
         // set cookie
         res.cookie(config.cookie_name, token, { maxAge: 3 * 24 * 60 * 60 * 1000 } )
+    },
+
+
+
+    /**
+     * @param {*} res 
+     */
+    logout : function(res){
+        res.cookie(config.cookie_name, '', {maxAge: 1})
     }
-
-
 
 }
 

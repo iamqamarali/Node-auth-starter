@@ -8,10 +8,7 @@ const {unique} = require('../customValidators/validators')
 const User = require('../Models/User')
 const GuestMiddleware = require('../middlewares/guest')
 
-router.get('/logout', function(req, res){
-    res.cookie('user_cookie', '', {maxAge: 1})
-    res.redirect('/login')
-});
+router.get('/logout', AuthController.logout);
 
 
 router.get('/login',GuestMiddleware, AuthController.loginForm)

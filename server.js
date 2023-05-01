@@ -1,3 +1,6 @@
+require('dotenv').config()
+
+
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose')
@@ -12,7 +15,6 @@ const flash = require('connect-flash');
 const ejs = require('ejs');
 const moment = require('moment')
 
-//require('dotenv').config()
 
 
 // connect mongoose to mongodb
@@ -61,16 +63,14 @@ app.use((req, res, next) => {
  * 
  * add middlewares
  * 
- */
-  
-let cookieSessionSecret = 'this is my secret for cookie parsing';
+ */  
 app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser(cookieSessionSecret))
+app.use(cookieParser(process.env.COOKIE_SESSION_SECRET))
 app.use(session({
     store: MongoSessionStore,
-    secret: cookieSessionSecret,
+    secret: process.env.COOKIE_SESSION_SECRET,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 3 // 1 week
     },

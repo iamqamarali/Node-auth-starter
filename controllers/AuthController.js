@@ -97,6 +97,16 @@ const AuthController = {
             res.redirect('/login')
         })
 
+    },
+
+
+    /**
+     * 
+     * logout employee
+     */
+    logout(req, res){
+        auth.logout(res)
+        res.redirect('/login')    
     }
 
 }

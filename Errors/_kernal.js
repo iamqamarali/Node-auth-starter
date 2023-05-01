@@ -22,13 +22,15 @@ module.exports = (err, req, res, next)=>{
                 err.handle(req, res, next)
                 return 
             }else{
+
+                // send default error page
                 res.status(err.statusCode)
                 res.render('error/default', {
                     layout: false,
-
                     message: err.message
                 }, )
                 return 
+                
             }
         }
     }
