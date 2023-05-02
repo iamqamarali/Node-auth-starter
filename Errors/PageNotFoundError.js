@@ -8,7 +8,9 @@ class PageNotFoundError extends Error {
     }
 
     handle(req, res){
-        return res.status(this.statusCode).render('error/404')
+        return res.status(this.statusCode).render('error/404', {
+            title : 'Page Not Found'
+        })
     }
     
 

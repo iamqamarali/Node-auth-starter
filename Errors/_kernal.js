@@ -26,6 +26,7 @@ module.exports = (err, req, res, next)=>{
                 // send default error page
                 res.status(err.statusCode)
                 res.render('error/default', {
+                    title: err.message,
                     layout: false,
                     message: err.message
                 }, )

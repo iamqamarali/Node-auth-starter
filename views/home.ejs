@@ -93,19 +93,6 @@
 
 
 <script>
-    let cookies = new Map()
-
-    if(document.cookie.indexOf('user_cookie') != -1){
-        let cookieArray = document.cookie.split(";")
-        cookieArray.forEach(c =>{ 
-            let [key, value] = c.split("=");  
-            cookies.set(key.trim(), value) }
-        )
-    }
-
-    console.log(cookies.get('user_cookie'))
-    
-
     let featured = document.querySelectorAll('.posts-grid--masonry .post-card');
 
     featured.forEach(elm => {

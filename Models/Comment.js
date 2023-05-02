@@ -5,10 +5,10 @@ const CommentSchema = new Mongoose.Schema({
         type: String,
         required: true,
     },
-    author : [{
+    author : {
         type: Mongoose.SchemaTypes.ObjectId,
         ref: 'User',
-    }]
+    }
 }, {
     timestamps: true,
 });

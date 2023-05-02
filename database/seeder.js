@@ -16,8 +16,8 @@ mongoose.connect(url, options)
 
 
 async function seedDatabase(){
-    await seedPosts(50)
-    //await seedUsers(20);
+    await seedUsers(50);
+    await seedPosts(500)
 }
 
 

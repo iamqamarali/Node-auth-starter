@@ -18,11 +18,53 @@
             </div>        
 
             <img src="<%= post.image %>" alt="" class="w-100">
+
             <div class="content my-5">
                 <% post.body.split('\n').forEach(content => { %>
                     <p><%= content %></p>                 
                 <% }) %>
             </div>
+
+            <!-- comments section -->
+
+            <div class=" my-4">
+                <h4 class="mb-4 pb-1">Comments</h4>
+
+                <div class="new-comment-box">
+                    <form action="/posts/<%= post._id %>/comments" method="POST">
+                        <textarea name="body" class="form-control" rows="5" resize="false" placeholder="Comment"></textarea>
+                        <button type="submit" class="btn btn-primary float-end mt-3">Comment</button>
+                        <div class=" clearfix "></div>
+                    </form>
+                </div>
+
+                <div class="comments">
+                    <% post.comments.forEach(comment => { %>
+                        <div class="comment mb-4">
+                            <div class="author align-items-start">
+                                <img src="<%= comment.author.avatar %>" alt="">
+                                <div>
+                                    <p class="pb-0">
+                                        <%= comment.author.name %>
+                                        <small class="text-muted ms-1 fw-normal">
+                                            (<%= moment(comment.createdAt).format('MMM Do Y') %>)
+                                        </small>
+                                    </p>
+                                    <div>
+
+                                        <%= comment.body %>
+                                        <br>
+
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+
+
+
         </div>
     </section>
 

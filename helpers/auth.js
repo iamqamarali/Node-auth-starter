@@ -48,6 +48,7 @@ const auth = {
         // inital state of request and response user
         res.locals.auth = auth
         res.locals.user = null
+        req.user = null
 
         // get token from cookies
         let token = req.cookies[config.cookie_name]
@@ -64,6 +65,7 @@ const auth = {
 
                 // add user to global response variables
                 res.locals.user = user.toObject({virtuals: true})
+                req.user = user
                 return true;
             }
         }catch(err){

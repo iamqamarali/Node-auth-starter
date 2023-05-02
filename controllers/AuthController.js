@@ -4,6 +4,8 @@ const { checkSchema } = require('express-validator')
 const { exists } = require('../customValidators/validators')
 const UnprocessableEntityError = require('../Errors/UnprocessableEntityError')
 const auth = require('../helpers/auth')
+const { faker } = require('@faker-js/faker')
+const bcrypt = require('bcrypt');
 
 const AuthController = {
 
@@ -48,20 +50,25 @@ const AuthController = {
         let user = await User.findOne({email: email})
 
         // if password doesnt match send error
-        if(user.password != password){
-            let errors = [{ 
-                field :  password ,
-                msg:"Password doesn't match"
-            }]
-            return next(new UnprocessableEntityError('', errors));
-        }
 
+        bcrypt.compare(password, user.password, function(err, result) {
+            if(err){
+                return next(new UnprocessableEntityError(null, err));
+            }
+            if(!result){
+                let errors = [{ 
+                    field :  password ,
+                    msg:"Password doesn't match"
+                }]
+                return next(new UnprocessableEntityError('', errors));    
+            }
+            // create JTW for user 
+            auth.login(user, res)
+
+            // send response
+            res.redirect('/dashboard')
+        });
         
-        // create JTW for user 
-        auth.login(user, res)
-
-        // send response
-        res.redirect('/')
     },
 
 
@@ -91,7 +98,9 @@ const AuthController = {
             first_name : req.body.first_name,
             last_name : req.body.last_name,
             email : req.body.email,
-            password : req.body.password,
+            password : bcrypt.hashSync(req.body.password, 10),
+            avatar : faker.image.avatar(),
+            roles: ['admin', 'user']
         })
         user.save().then((user) => {
             res.redirect('/login')

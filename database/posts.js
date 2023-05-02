@@ -13,9 +13,9 @@ async function seedPosts (count = 50){
 
         let post = new Post({
             title : faker.lorem.lines(1),
-            body : faker.lorem.paragraphs( random(3, 10) ),
+            body : faker.lorem.paragraphs( random(7, 20) ),
             tags : faker.lorem.words( random(1, 5) ).split(' '),
-            image: faker.image.imageUrl(640, 480, 'animals', true),
+            image: faker.image.imageUrl(800, 480, 'nature', true),
             author : user._id,            
             featured: faker.datatype.boolean(),
         })
