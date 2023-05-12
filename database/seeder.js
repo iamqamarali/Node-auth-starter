@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const seedPosts = require('./posts');
 const seedUsers = require('./users');
 
-const url = process.env.DB_URL
+const dbUrl = process.env.DB_URL
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family: 4 // Use IPv4, skip trying IPv6
 }
 mongoose.set('strictQuery', true)
-mongoose.connect(url, options)
+mongoose.connect(dbUrl, options)
         .then(function(){ console.log("mongodb connected") })
         .catch(function(){ console.log("mongodb connection failed") })
 
