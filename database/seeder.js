@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const seedPosts = require('./posts');
 const seedUsers = require('./users');
 
-const url = 'mongodb://127.0.0.1:27017/node-blog'
+const url = process.env.DB_URL
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
