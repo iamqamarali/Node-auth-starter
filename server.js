@@ -18,7 +18,7 @@ const moment = require('moment')
 
 
 // connect mongoose to mongodb
-const dbUrl = 'mongodb://127.0.0.1:27017/node-blog'
+const dbUrl = process.env.DB_URL
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -98,7 +98,7 @@ app.use(ErrorsHandler)
 /**
  * start server
  */
-const PORT = 3000 || process.env.PORT
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log('Server is running at port '+ PORT)
 })
