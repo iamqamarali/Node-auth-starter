@@ -1,3 +1,4 @@
+ require('dotenv').config()
 const mongoose = require('mongoose');
 const seedPosts = require('./posts');
 const seedUsers = require('./users');
