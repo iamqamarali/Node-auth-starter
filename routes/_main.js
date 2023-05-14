@@ -9,7 +9,7 @@ const PageNotFoundError = require('../Errors/PageNotFoundError')
 
 const router = Router()
 
-// global middlewares
+// application global middlewares
 router.use(checkAuthentication)
 router.use(FlashParamsAndErrors)
 
