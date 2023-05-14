@@ -50,7 +50,7 @@ const app = express()
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
-app.set('views', './views');
+app.set('views', __dirname + '/views');
 // app template engine variables
 app.use((req, res, next) => {
     res.locals.moment = moment;
@@ -63,7 +63,7 @@ app.use((req, res, next) => {
  * add middlewares
  * 
  */  
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser(process.env.COOKIE_SESSION_SECRET))
