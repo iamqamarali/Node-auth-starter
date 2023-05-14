@@ -66,7 +66,7 @@ const AuthController = {
             auth.login(user, res)
 
             // send response
-            res.redirect('/dashboard')
+            res.redirect('/dashboard/posts')
         });
         
     },
@@ -103,7 +103,7 @@ const AuthController = {
             roles: ['admin', 'user']
         })
         user.save().then((user) => {
-            res.redirect('/login/posts')
+            res.redirect('/login')
         })
 
     },
