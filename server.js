@@ -1,18 +1,18 @@
 require('dotenv').config()
 
 const express = require('express')
-// const expressLayouts = require('express-ejs-layouts');
-// const mongoose = require('mongoose')
-// const cookieParser = require('cookie-parser')
-// const MainRouter = require('./routes/_main')
-// const ErrorsHandler = require('./Errors/_kernal')
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const MainRouter = require('./routes/_main')
+const ErrorsHandler = require('./Errors/_kernal')
 
-// const session = require('express-session');
-// const MongoDBStore = require('connect-mongodb-session')(session);
-// const flash = require('connect-flash');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
-// const ejs = require('ejs');
-// const moment = require('moment')
+const ejs = require('ejs');
+const moment = require('moment')
 
 
 
@@ -44,29 +44,29 @@ const express = require('express')
  const app = express()
 
 
-// /**
-//  * setup ejs
-//  */
-// app.set('view engine', 'ejs');
-// app.use(expressLayouts);
-// app.set('layout', 'layouts/main');
-// app.set('views', __dirname + '/views');
-// // app template engine variables
-// app.use((req, res, next) => {
-//     res.locals.moment = moment;
-//     next();
-// });
+/**
+ * setup ejs
+ */
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
+app.set('views', __dirname + '/views');
+// app template engine variables
+app.use((req, res, next) => {
+    res.locals.moment = moment;
+    next();
+});
 
 
-// /**
-//  * 
-//  * add middlewares
-//  * 
-//  */  
-// app.use(express.static(__dirname + '/public'));
-// app.use(express.json())
-// app.use(express.urlencoded({ extended: false }))
-// app.use(cookieParser(process.env.COOKIE_SESSION_SECRET))
+/**
+ * 
+ * add middlewares
+ * 
+ */  
+app.use(express.static(__dirname + '/public'));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser(process.env.COOKIE_SESSION_SECRET))
 // app.use(session({
 //     store: MongoSessionStore,
 //     secret: process.env.COOKIE_SESSION_SECRET,
@@ -76,7 +76,7 @@ const express = require('express')
 //     resave: true,
 //     saveUninitialized: true
 // }))
-// app.use(flash());
+//app.use(flash());
 
 
 // //app.use(multer().single('photo'))
@@ -85,7 +85,7 @@ const express = require('express')
 //  * 
 //  * setup router
 //  */
-// app.use(MainRouter)
+//app.use(MainRouter)
 
 
 // /**
@@ -95,7 +95,11 @@ const express = require('express')
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.render('error/default', {
+        title: '500',
+        message: 'Random message from me',
+        layout: false,
+    })
 });
 
 
