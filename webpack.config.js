@@ -4,7 +4,7 @@
       entry: [
         __dirname + '/src/sass/app.scss',
         __dirname + '/src/js/app.js',
-        //__dirname + '/src/sass/admin/admin.scss',
+        __dirname + '/src/sass/admin/admin.scss',
           
       ],
       output: {

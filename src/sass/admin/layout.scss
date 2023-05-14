@@ -1,23 +1,23 @@
 .admin-template-body{
-    // background-color: #e8e8e8;
-    // padding: 15px;
-    // .template-wrapper{
-    //     background-color: white;
-    //     border-radius: 10px;
-    //     position: relative;
-    //     min-height: calc(100vh - 30px);
-    //     min-height: calc(100dvh - 30px);
-    // }
-
     .app-content{
         padding-left: var(--sidebar-width);
         margin: 0 50px 20px 50px;
 
         .main-content{
-            margin-top: 40px;
+            margin-top: calc(1.5rem + 1vw);
         }
     }
-
 }
+
+@media (max-width: 991px) {
+    .admin-template-body{
+
+        .app-content{
+            margin: 0 15px 20px 0;
+        }
+
+    }
+}
+
 
     

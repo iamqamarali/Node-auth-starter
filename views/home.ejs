@@ -3,7 +3,7 @@
 
 
     <section class="row mb-5">
-        <div class="col-lg-10 offset-lg-1">
+        <div class="col-xl-10 offset-xl-1">
             <header class="my-5">
                 <h3 >Featured Posts </h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nesciunt adipisci magnam ipsa consectetur beatae nihil magni porro vitae minus. Eligendi, deleniti? Suscipit, repudiandae cumque vitae dolorem laborum consequatur quibusdam.</p>
@@ -12,7 +12,7 @@
             
             <div class="posts-grid--masonry">
                 <% featured.forEach(function(post, index){ %>
-                    <div href="/posts/<%= post._id %>" class=" text-white card post-card post-card--overlaping-image item-<%= index+1 %> ">
+                    <div href="/posts/<%= post._id %>" class=" text-white card post-card post-card--overlaping-image item item-<%= index+1 %> ">
                         <div class="post-card__image" style="background-image:url('<%= post.image %>')" ></div>
                         <div class="card-body">
                             <div class="author">
@@ -63,7 +63,7 @@
 
 
         <% posts.forEach(post => { %>
-            <div class="col-4 mb-2">
+            <div class="col-md-4 mb-3">
                 <a href="/posts/<%= post._id %>" class="card text-body text-decoration-none">
                     <img src="<%= post.image %>" alt="" class="card-img-top">
                     <div class="card-body">

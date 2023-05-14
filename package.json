@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode=production",
-    "dev" : "npm run start",
+    "build": "webpack --config webpack.config.js --mode=production ",
+    "dev" : "webpack --config webpack.config.js --mode=production --watch",
     "start": "node server.js"
   },
   "keywords": [],
