@@ -32,16 +32,16 @@ mongoose.connect(dbUrl, options)
 
         
 // make mongo session store
-var MongoSessionStore = new MongoDBStore({
-    uri: dbUrl,
-    collection: 'my_sessions'
-});
-// Catch errors
-MongoSessionStore.on('error', function(error) {
-    console.log("Session storage Store error",error);
-});
-MongoSessionStore.on('connected', function() {
-})    
+// var MongoSessionStore = new MongoDBStore({
+//     uri: dbUrl,
+//     collection: 'my_sessions'
+// });
+// // Catch errors
+// MongoSessionStore.on('error', function(error) {
+//     console.log("Session storage Store error",error);
+// });
+// MongoSessionStore.on('connected', function() {
+// })    
 
 
 const app = express()
@@ -76,7 +76,7 @@ app.use(CheckDatabaseConnection)
  */  
 app.use(cookieParser(process.env.COOKIE_SESSION_SECRET))
 app.use(session({
-    store: MongoSessionStore,
+    //store: MongoSessionStore,
     secret: process.env.COOKIE_SESSION_SECRET,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 3 // 1 week
