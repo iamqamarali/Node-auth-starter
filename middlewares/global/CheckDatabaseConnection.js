@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
             if(mongoose.connection.readyState >= 1){
                 next()
             }else{
-                next(new InternalServerError("Database connection failed"))
+                next(new InternalServerError("Booting up please try again in 10 seconds"))
             }
         }, 8000)
     }

@@ -98,10 +98,13 @@ app.use(ErrorsHandler)
 /**
  * start server
  */
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log('Server is running at port '+ PORT)
-})
+// const PORT = process.env.PORT || 3001;
+// app.listen(PORT, () => {
+//     console.log('Server is running at port '+ PORT)
+// })
 
+const serverless = require('serverless-http');
 
-module.exports = app;
+module.exports.handler = serverless(app);
+
+module.exports.app = app;
