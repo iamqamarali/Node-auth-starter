@@ -6,7 +6,8 @@
   "scripts": {
     "prod": "webpack --config webpack.config.js --mode=production ",
     "dev": "webpack --config webpack.config.js --mode=production --watch",
-    "start": "node server.js"
+    "build" : "netlify-lambda build server",
+    "start" : "netlify-lambda serve server"
   },
   "keywords": [],
   "author": "",
