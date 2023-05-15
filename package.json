@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "netlify-lambda build express",
     "prod": "webpack --config webpack.config.js --mode=production ",
     "dev": "webpack --config webpack.config.js --mode=production --watch",
     "start": "node server.js"

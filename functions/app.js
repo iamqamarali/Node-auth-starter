@@ -45,7 +45,7 @@ MongoSessionStore.on('connected', function() {
 
 
 const app = express()
-
+const router = express.Router();
 
 
 /**
@@ -89,19 +89,14 @@ app.use(flash());
 
 
 // * setup router
-app.use(MainRouter)
+router.use(MainRouter)
 
 // * error handler
-app.use(ErrorsHandler)
+router.use(ErrorsHandler)
 
-
-/**
- * start server
- */
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log('Server is running at port '+ PORT)
-})
+// path must route to lambda (express/server.js)
+app.use('/.netlify/functions/server', router);  
 
 
 module.exports = app;
+module.exports.handler = serverless(app);
